@@ -1,0 +1,22 @@
+#entries
+  form#join
+    p
+      label(for='handle', autofocus) Handle: 
+      input#handle(type='text', name='handle')
+    p
+      label(for='avatar') Avatar: 
+      select#avatar(name='avatar')
+        option(value='bacula') Bacula
+        option(value='kanra') Kanra
+        option(value='saika') Saika
+        option(value='setton') Setton
+        option(value='taro_tanaka') Taro Tanaka
+    p
+      input(type='submit', value='JOIN!')
+  form#post
+    p
+      textarea(name='text', autofocus)
+    p
+      input(type='submit', value='POST!')
+#alerts
+#messages
