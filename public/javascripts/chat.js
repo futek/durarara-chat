@@ -80,8 +80,11 @@ $(function() {
             var $element = $('<p/>');
 
             if (message.handle) {
+              $element.addClass('bubble');
+              $element.addClass(message.avatar);
               $element.text("<" + message.handle + "> " + message.text);
             } else {
+              $element.addClass('notice');
               $element.text("-- " + message.text);
             }
 

@@ -3,7 +3,8 @@ body {
   padding: 0;
   background-color: #000;
   color: #fff;
-  font: 14px "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+  font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .rounded_corners(@radius: 20px) {
@@ -12,27 +13,55 @@ body {
   border-radius: @radius;
 }
 
+.gradient_background(@a, @b, @c, @d) {
+  background-color: @c;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@a), to(@d), color-stop(.49, @b), color-stop(.51, @c));
+  background: -moz-linear-gradient(top, @a, @b 49%, @c 51%, @d);
+}
+
 form {
   p {
     margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 25px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-  input {
+  input, select, textarea {
+    width: 280px;
+    height: 40px;
+    border: 1px #000 solid;
     .rounded_corners;
+    outline: none;
+    font-size: 20px;
+    font-family: Helvetica, Arial, sans-serif;
   }
 
-  p * {
-    outline: none;
+  input, select {
+    padding: 0 15px;
+  }
+
+  input[type=submit] {
+    .gradient_background(#ffffff, #fcfcfc, #f3f3e9, #e0e0d6);
+    letter-spacing: 8px;
+
+    &:active {
+      .gradient_background(#e0e0d6, #f3f3e9, #fcfcfc, #ffffff);
+    }
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
   }
 }
 
 #entries {
-  padding: 20px;
+  padding: 15px 100px;
   text-align: center;
   background-color: #fff;
   color: #000;
@@ -48,7 +77,7 @@ form {
 #alerts {
   p {
     margin: 0;
-    padding: 5px;
+    padding: 5px 60px;
     text-align: center;
     background-color: #ffa;
     color: #996;
@@ -63,5 +92,43 @@ form {
 
 #messages {
   display: none;
-}
+  padding: 40px 60px;
 
+  p {
+    clear: both;
+    margin: 0 0 20px 0;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  p.bubble {
+    float: left;
+    padding: 25px 30px;
+    border: 5px #fff solid;
+    .rounded_corners;
+    text-shadow: 1px 0px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  p.notice {
+  }
+
+  p.bacula {
+    .gradient_background(#d3ff7f, #b3ff56, #8aff43, #3d6b20);
+  }
+
+  p.kanra {
+    .gradient_background(#f2d34e, #ec9234, #cf6815, #e87b21);
+  }
+
+  p.saika {
+    .gradient_background(#c25668, #991222, #8b0002, #9d0c12);
+  }
+
+  p.setton {
+    .gradient_background(#c8c3c0, #9f949b, #80737d, #796e75);
+  }
+
+  p.taro_tanaka {
+    .gradient_background(#88b4d8, #6a97cf, #4d79ba, #4a69a1);
+  }
+}
