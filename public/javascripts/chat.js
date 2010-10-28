@@ -77,18 +77,11 @@ $(function() {
       success: function(data) {
         if (data) {
           $.each(data, function(index, message) {
-            var $element = $('<p/>');
-
             if (message.handle) {
-              $element.addClass('bubble');
-              $element.addClass(message.avatar);
-              $element.text("<" + message.handle + "> " + message.text);
+              addMessage(message.handle, message.avatar, message.text);
             } else {
-              $element.addClass('notice');
-              $element.text("-- " + message.text);
+              addNotice(message.text);
             }
-
-            $('#messages').prepend($element);
 
             if (message.time > session.time) {
               session.time = message.time;
@@ -161,6 +154,61 @@ $(function() {
       $alerts.children().remove();
       $alerts.show();
     });
+  }
+
+  function addMessage(handle, avatar, text) {
+    var $clear = $('<div/>', {
+      'class': 'clear'
+    });
+
+    var $message = $('<div/>', {
+      'class': 'message'
+    });
+
+    $message.addClass(avatar);
+
+    var $info = $('<div/>', {
+      'class': 'info'
+    }).append($('<img>', {
+      'src': '/images/' + avatar + '.png'
+    })).append($('<span>', {
+      text: handle
+    }));
+
+    var $bubble = $('<div/>', {
+      'class': 'bubble',
+      text: text
+    });
+
+    $bubble.css({
+      opacity: 0,
+      'padding': '0'
+    });
+
+    $bubble.animate({
+      opacity: 1,
+      paddingTop: '25px',
+      paddingRight: '30px',
+      paddingBottom: '25px',
+      paddingLeft: '30px',
+    }, 250);
+
+    $message.append($info).append($bubble);
+
+    $('#messages').prepend($clear).prepend($message);
+  }
+
+  function addNotice(text) {
+    var $clear = $('<div/>', {
+      'class': 'clear'
+    });
+
+    var $notice = $('<div/>', {
+      'class': 'notice',
+      text: "-- " + text
+    });
+
+    $('#messages').prepend($clear).prepend($notice);
   }
 
   // Bindings

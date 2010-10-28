@@ -1,3 +1,5 @@
+@message-spacing: 30px;
+
 body {
   margin: 0;
   padding: 0;
@@ -5,6 +7,10 @@ body {
   color: #fff;
   font-size: 14px;
   font-family: Helvetica, Arial, sans-serif;
+}
+
+.clear {
+  clear: both;
 }
 
 .rounded_corners(@radius: 20px) {
@@ -94,41 +100,60 @@ form {
   display: none;
   padding: 40px 60px;
 
-  p {
-    clear: both;
-    margin: 0 0 20px 0;
-    font-size: 25px;
-    font-weight: bold;
-  }
-
-  p.bubble {
+  .message {
     float: left;
-    padding: 25px 30px;
-    border: 5px #fff solid;
-    .rounded_corners;
-    text-shadow: 1px 0px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: @message-spacing;
+
+    .info {
+      float: left;
+
+      img {
+        border: 3px #fff solid;
+      }
+
+      span {
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+      }
+    }
+
+    .bubble {
+      float: right;
+      margin-left: 50px;
+      padding: 25px 30px;
+      border: 5px #fff solid;
+      .rounded_corners;
+      text-shadow: 1px 0px 4px rgba(0, 0, 0, 0.5);
+      font-size: 25px;
+      font-weight: bold;
+    }
   }
 
-  p.notice {
-  }
-
-  p.bacula {
+  .message.bacula .bubble {
     .gradient_background(#d3ff7f, #b3ff56, #8aff43, #3d6b20);
   }
 
-  p.kanra {
+  .message.kanra .bubble {
     .gradient_background(#f2d34e, #ec9234, #cf6815, #e87b21);
   }
 
-  p.saika {
+  .message.saika .bubble {
     .gradient_background(#c25668, #991222, #8b0002, #9d0c12);
   }
 
-  p.setton {
+  .message.setton .bubble {
     .gradient_background(#c8c3c0, #9f949b, #80737d, #796e75);
   }
 
-  p.taro_tanaka {
+  .message.taro_tanaka .bubble {
     .gradient_background(#88b4d8, #6a97cf, #4d79ba, #4a69a1);
+  }
+
+  .notice {
+    margin-bottom: @message-spacing;
+    font-size: 25px;
+    font-weight: bold;
   }
 }
