@@ -45,5 +45,5 @@ var chat = require('./chat.js');
 
 if (!module.parent) {
   app.listen(3000);
-  console.log("Express server listening on port %d", app.address().port)
+  console.log("Express server listening on port %d", app.address().port);
 }

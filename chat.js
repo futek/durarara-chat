@@ -90,7 +90,7 @@ var Session = exports.Session = function(handle, avatar, destroyCallbacks) {
 
 Session.prototype.touch = function() {
   this.time = (new Date()).getTime();
-}
+};
 
 Session.prototype.destroy = function(timedOut) {
   delete sessions[this.id];
@@ -106,7 +106,7 @@ Session.prototype.destroy = function(timedOut) {
       }
     }
   }
-}
+};
 
 Session.prototype.pack = function() {
   return {
@@ -114,7 +114,7 @@ Session.prototype.pack = function() {
     handle: this.handle,
     avatar: this.avatar
   };
-}
+};
 
 setInterval(function() {
   var now = (new Date()).getTime();
@@ -145,7 +145,7 @@ var Channel = exports.Channel = function(logCallback) {
       self.callbacks.shift().callback([]);
     }
   }, configuration.callbackClearInterval);
-}
+};
 
 Channel.prototype.appendMessage = function() {
   arguments = Array.prototype.slice.call(arguments);
@@ -188,7 +188,7 @@ Channel.prototype.appendMessage = function() {
   }
 
   this.logCallback(message);
-}
+};
 
 Channel.prototype.query = function(time, callback) {
   var matches = this.messages.filter(function(message) {
@@ -203,7 +203,7 @@ Channel.prototype.query = function(time, callback) {
       time: (new Date()).getTime()
     });
   }
-}
+};
 
 var channel = new Channel(function(message) {
   if (configuration.logChannel) {
